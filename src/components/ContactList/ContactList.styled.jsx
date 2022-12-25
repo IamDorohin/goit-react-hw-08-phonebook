@@ -7,6 +7,7 @@ export const Contacts = styled.ul`
   border-left: 1px solid black;
   border-right: 1px solid black;
   border-radius: 5px;
+  background-color: teal;
 `;
 
 export const ContactItem = styled.li`

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addContact } from 'redux/operations';
+import { addContact } from 'redux/contacts/operations';
 import {
   FormContainer,
   FormLabel,
@@ -10,6 +10,7 @@ import {
 
 export default function ContactForm() {
   const contactsArray = useSelector(state => state.contacts.items);
+
   const dispatch = useDispatch();
 
   const [name, setName] = useState('');
@@ -23,7 +24,6 @@ export default function ContactForm() {
       case 'number':
         setNumber(event.currentTarget.value);
         break;
-
       default:
         throw new Error('Sorry, but this data format cannot be accepted');
     }
@@ -31,13 +31,12 @@ export default function ContactForm() {
 
   const pushContactNameHandler = event => {
     event.preventDefault();
-
     if (contactsArray.find(contact => contact.name === name)) {
       alert('There is already a subscriber with this name in the phone book!');
       return;
     }
-
     dispatch(addContact({ name, number }));
+    console.log(contactsArray);
     resetForm();
   };
 

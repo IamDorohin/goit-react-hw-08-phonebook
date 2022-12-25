@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/operations';
+import { fetchContacts, deleteContact } from 'redux/contacts/operations';
 import {
   Contacts,
   ContactItem,
@@ -10,6 +11,7 @@ import {
 
 export const ContactList = () => {
   const contactsArray = useSelector(state => state.contacts.items);
+  console.log(contactsArray);
   const filteredNames = useSelector(state => state.filter);
   let normalizedFilter = filteredNames.toLowerCase();
   const filteredContactsArray = contactsArray.filter(contact =>
@@ -18,13 +20,18 @@ export const ContactList = () => {
 
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(fetchContacts());
+    console.log(fetchContacts());
+  }, [dispatch]);
+
   return (
     <Contacts>
-      {filteredContactsArray.map(({ id, name, phone }) => {
+      {filteredContactsArray.map(({ id, name, number }) => {
         return (
           <ContactItem key={id}>
             <ContactDetails> {name} </ContactDetails>
-            <ContactDetails> {phone} </ContactDetails>
+            <ContactDetails> {number} </ContactDetails>
             <ContactButton
               type="button"
               onClick={() => dispatch(deleteContact(id))}

@@ -12,6 +12,7 @@ export const FormContainer = styled.form`
   border-left: 1px solid black;
   border-right: 1px solid black;
   border-radius: 5px;
+  background-color: teal;
 `;
 
 export const FormLabel = styled.label`
