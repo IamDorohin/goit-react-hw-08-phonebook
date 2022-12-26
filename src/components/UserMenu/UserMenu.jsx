@@ -11,7 +11,6 @@ import {
 export const UserMenu = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
-
   return (
     <>
       <UserHeaderLogo to="/">Phonebook</UserHeaderLogo>

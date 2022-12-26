@@ -22,7 +22,6 @@ export const ContactList = () => {
 
   useEffect(() => {
     dispatch(fetchContacts());
-    console.log(fetchContacts());
   }, [dispatch]);
 
   return (
