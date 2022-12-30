@@ -2,15 +2,21 @@ import { Formik, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
-
+import { PageName } from 'components/PagesName/PagesName.styled';
+import {
+  ButtonContainer,
+  BlueButton,
+  GreenButton,
+} from 'components/CommonFormButtons/CommonFormButtons.styled';
+import { ErrorText } from 'components/ErrorMessage/ErrorMessage.styled';
 import {
   LogInMain,
   LogInSection,
   LogInContainer,
   LogInForm,
   LogInLabel,
+  LogInLabelName,
   LogInInput,
-  LogInButton,
 } from 'components/LogInComponent/LogInComponent.styled';
 
 const validationSchema = yup.object().shape({
@@ -21,6 +27,15 @@ const validationSchema = yup.object().shape({
 const initialValues = {
   email: '',
   password: '',
+};
+
+const FormError = ({ name }) => {
+  return (
+    <ErrorMessage
+      name={name}
+      render={message => <ErrorText>{message}</ErrorText>}
+    />
+  );
 };
 
 export const LogInComponent = () => {
@@ -41,6 +56,7 @@ export const LogInComponent = () => {
     <LogInMain>
       <LogInSection>
         <LogInContainer>
+          <PageName>Log in</PageName>
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
@@ -48,36 +64,24 @@ export const LogInComponent = () => {
           >
             <LogInForm>
               <LogInLabel htmlFor="email">
-                Email
+                <LogInLabelName>Email</LogInLabelName>
+
                 <LogInInput type="email" name="email" />
-                <ErrorMessage name="email" />
+                <FormError name="email" />
               </LogInLabel>
               <LogInLabel htmlFor="password">
-                Password
+                <LogInLabelName> Password</LogInLabelName>
                 <LogInInput type="password" name="password" />
-                <ErrorMessage name="password" />
+                <FormError name="password" />
               </LogInLabel>
-              <LogInButton type="submit">Submit</LogInButton>
+              <ButtonContainer>
+                <BlueButton to="/">Home</BlueButton>
+                <GreenButton type="submit">Log in</GreenButton>
+              </ButtonContainer>
             </LogInForm>
           </Formik>
         </LogInContainer>
       </LogInSection>
     </LogInMain>
-
-    // <LogInMain>
-    //   <LogInSection>
-    //     <LogInContainer>
-    //       <LogInForm>
-    //         <LogInLabel>
-    //           <LogInInput />
-    //         </LogInLabel>
-    //         <LogInLabel>
-    //           <LogInInput />
-    //         </LogInLabel>
-    //         <LogInButton>Log in</LogInButton>
-    //       </LogInForm>
-    //     </LogInContainer>
-    //   </LogInSection>
-    // </LogInMain>
   );
 };

@@ -4,14 +4,20 @@ import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
 import {
+  ButtonContainer,
+  BlueButton,
+  GreenButton,
+} from 'components/CommonFormButtons/CommonFormButtons.styled';
+import { ErrorText } from 'components/ErrorMessage/ErrorMessage.styled';
+import { PageName } from 'components/PagesName/PagesName.styled';
+import {
   RegistrationMain,
   RegistrationSection,
   RegistrationContainer,
   RegistrationForm,
   RegistrationLabel,
-  // RegistrationLabelName,
+  RegistrationLabelName,
   RegistrationInput,
-  RegistrationButton,
 } from './RegistrationComponent.styled';
 
 const validationSchema = yup.object().shape({
@@ -26,14 +32,20 @@ const initialValues = {
   password: '',
 };
 
+const FormError = ({ name }) => {
+  return (
+    <ErrorMessage
+      name={name}
+      render={message => <ErrorText>{message}</ErrorText>}
+    />
+  );
+};
+
 export const RegistrationComponent = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, { resetForm }) => {
     const enteredData = values;
-    // console.log(enteredData.nickname);
-    // console.log(enteredData.email);
-    // console.log(enteredData.password);
 
     dispatch(
       register({
@@ -49,30 +61,35 @@ export const RegistrationComponent = () => {
     <RegistrationMain>
       <RegistrationSection>
         <RegistrationContainer>
+          <PageName>Sign up</PageName>
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
             onSubmit={handleSubmit}
           >
             <RegistrationForm>
-              <RegistrationLabel htmlFor="email">
-                Nickname
+              <RegistrationLabel htmlFor="nickname">
+                <RegistrationLabelName>Nickname</RegistrationLabelName>
+                <FormError name="nickname" />
+
                 <RegistrationInput type="text" name="nickname" />
-                <ErrorMessage name="nickname" />
               </RegistrationLabel>
               <RegistrationLabel htmlFor="email">
-                Email
+                <FormError name="email" />
+
+                <RegistrationLabelName>Email</RegistrationLabelName>
                 <RegistrationInput type="email" name="email" />
-                <ErrorMessage name="email" />
               </RegistrationLabel>
               <RegistrationLabel htmlFor="password">
-                Password
+                <FormError name="password" />
+
+                <RegistrationLabelName>Password</RegistrationLabelName>
                 <RegistrationInput type="password" name="password" />
-                <ErrorMessage name="password" />
               </RegistrationLabel>
-              <RegistrationButton type="submit">
-                I want to register
-              </RegistrationButton>
+              <ButtonContainer>
+                <BlueButton to="/">Home</BlueButton>
+                <GreenButton type="submit">Sign up</GreenButton>
+              </ButtonContainer>
             </RegistrationForm>
           </Formik>
         </RegistrationContainer>

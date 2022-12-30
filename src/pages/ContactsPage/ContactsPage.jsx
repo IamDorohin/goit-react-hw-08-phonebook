@@ -1,14 +1,16 @@
-import ContactForm from 'components/ContactForm/ContactForm';
+import { PageName } from 'components/PagesName/PagesName.styled';
 import { ContactList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
+import { ContactsPageContainer } from './ContactsPage.styled';
 
 export const ContactsPage = () => {
-  console.log();
   return (
-    <>
-      <ContactForm />
-      <Filter />
-      <ContactList />
-    </>
+    <main>
+      <ContactsPageContainer>
+        <PageName>Contacts list</PageName>
+        <Filter />
+        <ContactList />
+      </ContactsPageContainer>
+    </main>
   );
 };

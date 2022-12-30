@@ -1,5 +1,18 @@
-import { GuestHeaderLogo } from './GuestHeader.styled';
+import {
+  GuestHeaderList,
+  GuestHeaderItem,
+  GuestHeaderLink,
+} from './GuestHeader.styled';
 
 export const GuestHeader = () => {
-  return <GuestHeaderLogo to="/">Phonebook</GuestHeaderLogo>;
+  return (
+    <GuestHeaderList>
+      <GuestHeaderItem>
+        <GuestHeaderLink to="/register">Sign up</GuestHeaderLink>
+      </GuestHeaderItem>
+      <GuestHeaderItem>
+        <GuestHeaderLink to="/login">Log in</GuestHeaderLink>
+      </GuestHeaderItem>
+    </GuestHeaderList>
+  );
 };

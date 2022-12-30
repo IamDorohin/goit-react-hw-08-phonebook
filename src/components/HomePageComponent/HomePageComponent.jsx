@@ -2,10 +2,9 @@ import {
   HomeMain,
   HomeSection,
   HomeContainer,
-  HomeTitle,
+  HomeWelcomeText,
   HomeList,
   HomeItem,
-  HomeLink,
 } from './HomePageComponent.styled';
 
 export const HomePageComponent = () => {
@@ -13,19 +12,20 @@ export const HomePageComponent = () => {
     <HomeMain>
       <HomeSection>
         <HomeContainer>
-          <HomeTitle>
-            Hi there! This is your personal phone book! In order to use all
-            Phonebook advantages, register in the system or log in if you have a
-            registered account!
-          </HomeTitle>
+          <HomeWelcomeText>Hi there!</HomeWelcomeText>
+          <HomeWelcomeText>This is your personal phone book.</HomeWelcomeText>
+          <HomeWelcomeText>
+            I can help you work with your contacts.
+          </HomeWelcomeText>
           <HomeList>
-            <HomeItem>
-              <HomeLink to="/register">Register</HomeLink>
-            </HomeItem>
-            <HomeItem>
-              <HomeLink to="/login">LogIn</HomeLink>
-            </HomeItem>
+            <HomeItem>Add</HomeItem>
+            <HomeItem>Sort</HomeItem>
+            <HomeItem>Count</HomeItem>
+            <HomeItem>Delete</HomeItem>
           </HomeList>
+          <HomeWelcomeText>
+            But first you must sign up and login!
+          </HomeWelcomeText>
         </HomeContainer>
       </HomeSection>
     </HomeMain>
