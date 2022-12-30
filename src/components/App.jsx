@@ -52,23 +52,23 @@ export default function App() {
             path="/login"
             element={
               <RestrictedRoute
-                component={<LogInPage />}
                 redirectTo="/contacts"
+                component={<LogInPage />}
               />
             }
           />
           <Route
             path="/contacts"
             element={
-              <PrivateRoute component={<ContactsPage />} redirectTo="/login" />
+              <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
             }
           />
           <Route
             path="/add"
             element={
               <PrivateRoute
-                component={<AddContactPage />}
                 redirectTo="/login"
+                component={<AddContactPage />}
               />
             }
           />
