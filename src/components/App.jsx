@@ -1,19 +1,25 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
-
 import { Layout } from './Layout/Layout';
-import { HomePage } from 'pages/HomePage/HomePage';
-import { RegistrationPage } from 'pages/RegistrationPage/RegistrationPage';
-import { LogInPage } from 'pages/LogInPage/LogInPage';
-import { ContactsPage } from 'pages/ContactsPage/ContactsPage';
-import { NotFoundPage } from 'pages/NotFoundPage/NotFoundPage';
 import { refreshUser } from 'redux/auth/operations';
-import { RestrictedRoute } from 'components/Routes/RestrictedRoute';
-import { PrivateRoute } from 'components/Routes/PrivateRoute';
-import { AddContactPage } from 'pages/AddContactPage/AddContactPage';
 import { selectIsRefreshing } from 'redux/auth/selectors';
+
+const RestrictedRoute = lazy(() =>
+  import('../components/Routes/RestrictedRoute')
+);
+const PrivateRoute = lazy(() => import('../components/Routes/PrivateRoute'));
+const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
+const RegistrationPage = lazy(() =>
+  import('../pages/RegistrationPage/RegistrationPage')
+);
+const LogInPage = lazy(() => import('../pages/LogInPage/LogInPage'));
+const ContactsPage = lazy(() => import('../pages/ContactsPage/ContactsPage'));
+const AddContactPage = lazy(() =>
+  import('../pages/AddContactPage/AddContactPage')
+);
+const NotFoundPage = lazy(() => import('../pages/NotFoundPage/NotFoundPage'));
 
 export default function App() {
   const isRefreshing = useSelector(selectIsRefreshing);

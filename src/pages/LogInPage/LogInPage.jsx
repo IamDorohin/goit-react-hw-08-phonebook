@@ -1,5 +1,7 @@
 import { LogInComponent } from 'components/LogInComponent/LogInComponent';
 
-export const LogInPage = () => {
+const LogInPage = () => {
   return <LogInComponent />;
 };
+
+export default LogInPage;

@@ -3,7 +3,7 @@ import { ContactList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
 import { ContactsPageContainer } from './ContactsPage.styled';
 
-export const ContactsPage = () => {
+const ContactsPage = () => {
   return (
     <main>
       <ContactsPageContainer>
@@ -14,3 +14,4 @@ export const ContactsPage = () => {
     </main>
   );
 };
+export default ContactsPage;

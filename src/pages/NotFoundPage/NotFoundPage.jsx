@@ -8,7 +8,7 @@ import {
   NotFoundLink,
 } from 'pages/NotFoundPage/NotFoundPage.styled';
 
-export const NotFoundPage = () => {
+const NotFoundPage = () => {
   const location = useLocation();
   const data = location.state?.from ?? '/';
 
@@ -31,3 +31,5 @@ export const NotFoundPage = () => {
     </main>
   );
 };
+
+export default NotFoundPage;

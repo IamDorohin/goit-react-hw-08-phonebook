@@ -1,5 +1,7 @@
 import { HomePageComponent } from 'components/HomePageComponent/HomePageComponent';
 
-export const HomePage = () => {
+const HomePage = () => {
   return <HomePageComponent />;
 };
+
+export default HomePage;

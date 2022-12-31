@@ -1,5 +1,7 @@
 import { ContactForm } from 'components/ContactForm/ContactForm';
 
-export const AddContactPage = () => {
+const AddContactPage = () => {
   return <ContactForm />;
 };
+
+export default AddContactPage;
