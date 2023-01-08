@@ -137,6 +137,7 @@ export const ContactDetails = styled.span`
 `;
 
 export const ContactButton = styled.button`
+-webkit-appearance: button;
   border-radius: ${p => p.theme.radii.normal};
   border-color: transparent;
   background-color: transparent;
